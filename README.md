@@ -1,2 +1,10 @@
 # Order-Management-System
-Orders list
+Order management sysem will show list of orders 
+
+### Login
+
+Login with credentials 
+Run login.html 
+
+Username : admin
+Passwod : admin
