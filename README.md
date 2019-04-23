@@ -7,4 +7,4 @@ Login with credentials
 
 
 Username : admin,
-Passwod : admin
+Password : admin
