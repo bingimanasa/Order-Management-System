@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">!-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>!-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  
+
+	
+<style type="text/css">
+.tc{
+     color:navy;}
+
+.panel-login {
+	border-color: #ccc;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.panel-login>.panel-heading {
+	color: #00415d;
+	background-color: #fff;
+	border-color: #fff;
+	text-align:center;
+}
+.panel-login>.panel-heading a{
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+	font-size: 15px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login>.panel-heading a.active{
+	color: #029f5b;
+	font-size: 18px;
+}
+.panel-login>.panel-heading hr{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	clear: both;
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+	height: 45px;
+	border: 1px solid #ddd;
+	font-size: 16px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login input:hover,
+.panel-login input:focus {
+	outline:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-color: #ccc;
+}
+.btn-login {
+	background-color: #1CB94E;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #59B2E6;
+}
+.btn-login:hover,
+.btn-login:focus {
+	color: #fff;
+	background-color: #1CA347;
+	border-color: #1CA347;
+}
+.forgot-password {
+	text-decoration: underline;
+	color: #888;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+	text-decoration: underline;
+	color: #666;
+}
+
+.btn-register {
+	background-color: #1CB94E;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #1CB94A;
+}
+.btn-register:hover,
+.btn-register:focus {
+	color: #fff;
+	background-color: #1CA347;
+	border-color: #1CA347;
+}
+
+    </style>
+
+<body class="bg_color">
+
+<!-- header End -->
+
+<div class="container">
+  <h2>Orders Table</h2>   
+  <div class="float-right">
+	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"> + New Order</button>
+  </div> 
+  
+   <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add New Order</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+         
+	<div class="container">
+  	<form action="javascript:add_new_order();">
+    	 <div class="form-group">
+          <label>Order Number:</label>
+           <input type="text" class="form-control" id="order_no" placeholder="Enter Order number" name="order_no">
+         </div>
+         <div class="form-group">
+          <label for="pwd">Order Due Date:</label>
+           <input type="text" class="form-control" id="order_due_date" placeholder="Enter Order Due Date" name="order_due_date">
+         </div>
+        <div class="form-group">
+          <label for="pwd">Customer Name:</label>
+           <input type="text" class="form-control" id="customer_name" placeholder="Enter Customer Name" name="customer_name">
+         </div>
+	 <div class="form-group">
+          <label for="pwd">Customer Address:</label>
+           <input type="text" class="form-control" id="customer_addr" placeholder="Enter Customer Address" name="customer_addr">
+         </div>
+	 <div class="form-group">
+          <label for="pwd">Customer Phone:</label>
+           <input type="text" class="form-control" id="customer_phone" placeholder="Enter Customer Phone" name="customer_phone">
+         </div>
+	 <div class="form-group">
+          <label for="pwd">Order Total:</label>
+           <input type="text" class="form-control" id="order_tot" placeholder="Enter Order Total" name="order_tot">
+         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+       </div>
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  </br></br>    
+  <table class="table table-dark table-striped" id="tblCustomers">
+    <thead>
+      <tr>
+        <th>Order No</th>
+        <th>Order Due date</th>
+        <th>Customer name</th>
+	<th>Customer Address</th>
+	<th>Phone</th>
+	<th>Order Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="order_no">1</td>
+        <td id = "order_due_date">04-04-2019</td>
+        <td id = "customer_name">John</td>
+	<td id = "customer_addr">Hyderabad</td>
+	<td id = "customer_phone">8765678765</td>
+	<td id = "order_tot">2500</td>
+	<td> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal"> <i class="fa fa-edit"></i> Edit</button></td>
+	<td> <button type="button" class="btn btn-info" id="delete_order"> <i class="fa fa-trash-o" ></i> Delete</button></td>
+      </tr>
+      <tr>
+        <td id="order_no">2</td>
+        <td id = "order_due_date">27-03-2019</td>
+        <td id = "customer_name">Mary</td>
+	<td id = "customer_addr">Delhi</td>
+	<td id = "customer_phone">9889898989</td>
+	<td id = "order_tot">3000</td>
+	<td> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal"> <i class="fa fa-edit"></i> Edit</button></td>
+	<td> <button type="button" class="btn btn-info" id="delete_order"> <i class="fa fa-trash-o" ></i> Delete</button></td>
+      </tr>
+      <tr>
+        <td id="order_no">3</td>
+        <td id = "order_due_date">18-04-2019</td>
+        <td id = "customer_name">Ram</td>
+	<td id = "customer_addr">Gujarat</td>
+	<td id = "customer_phone">9876789876</td>
+	<td id = "order_tot">4000</td>
+	<td> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal"> <i class="fa fa-edit"></i> Edit</button></td>
+	<td> <button type="button" class="btn btn-info" id="delete_order"> <i class="fa fa-trash-o" ></i> Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- edit modal!-->
+
+ <!-- The Modal -->
+  <div class="modal fade" id="editModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add New Order</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+         
+	<div class="container">
+  	<form ><!--action="javascript:edit_order();"-->
+    	 <div class="form-group">
+          <label>Order Number:</label>
+           <input type="text" class="form-control order_no" id="order_no" placeholder="Enter Order number" name="order_no">
+         </div>
+         <div class="form-group">
+          <label for="pwd">Order Due Date:</label>
+           <input type="text" class="form-control" id="order_due_date" placeholder="Enter Order Due Date" name="order_due_date">
+         </div>
+        <div class="form-group">
+          <label for="pwd">Customer Name:</label>
+           <input type="text" class="form-control" id="customer_name" placeholder="Enter Customer Name" name="customer_name">
+         </div>
+	 <div class="form-group">
+          <label for="pwd">Customer Address:</label>
+           <input type="text" class="form-control" id="customer_addr" placeholder="Enter Customer Address" name="customer_addr">
+         </div>
+	 <div class="form-group">
+          <label for="pwd">Customer Phone:</label>
+           <input type="text" class="form-control" id="customer_phone" placeholder="Enter Customer Phone" name="customer_phone">
+         </div>
+	 <div class="form-group">
+          <label for="pwd">Order Total:</label>
+           <input type="text" class="form-control" id="order_tot" placeholder="Enter Order Total" name="order_tot">
+         </div>
+        
+        </form>
+       </div>
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+<!-- end edit modal !-->
+
+</body>
+<script>
+function add_new_order(){    
+	var order_no = document.getElementById("order_no").value;
+	var order_due_date = document.getElementById("order_due_date").value;
+	var customer_name = document.getElementById("customer_name").value;
+	var customer_addr = document.getElementById("customer_addr").value;
+	var customer_phone = document.getElementById("customer_phone").value;
+	var order_tot = document.getElementById("order_tot").value;
+        var tBody = document.getElementById("tblCustomers").getElementsByTagName("TBODY")[0];
+ 
+            //Add Row.
+            row = tBody.insertRow(-1);
+ 
+            
+ 	    data = [order_no,order_due_date,customer_name,customer_addr,customer_phone,order_tot];
+	    for(var i = 0;i<8;i++){
+		cell = row.insertCell(-1);
+            	cell.innerHTML = data[i];
+		if( i == 6 ){
+			edit = '<button type="button" class="btn btn-info" data-toggle="modal" data-target="#editModal"> <i class="fa fa-edit"></i> Edit</button>'
+			cell.innerHTML = edit;
+		}
+		if( i == 7 ){
+			del = '<button type="button" class="btn btn-info" id="delete_order"> <i class="fa fa-trash-o" ></i> Delete</button>'
+			cell.innerHTML = del;
+		}
+	    }
+            
+        
+}
+
+//load values of td in modal
+$(document).ready(function() {    
+  $('#editModal').on('show.bs.modal', function (e) {
+    
+  var _button = $(e.relatedTarget); // Button that triggered the modal
+    
+    // console.log(_button, _button.parents("tr"));
+    var _row = _button.parents("tr");
+    var order_no = _row.find("#order_no").text();
+    var order_due_date = _row.find("#order_due_date").text();
+    var customer_name = _row.find("#customer_name").text();
+    var customer_addr = _row.find("#customer_addr").text();
+    var customer_phone = _row.find("#customer_phone").text();
+    var order_tot = _row.find("#order_tot").text();
+    
+    $(this).find("#order_no").val(order_no);
+    $(this).find("#order_due_date").val(order_due_date);
+    $(this).find("#customer_name").val(customer_name);
+    $(this).find("#customer_addr").val(customer_addr);
+    $(this).find("#customer_phone").val(customer_phone);
+    $(this).find("#order_tot").val(order_tot);
+  });  
+  
+});
+
+
+$('#editModal').on('show.bs.modal', function (e) {
+    
+  var _button = $(e.relatedTarget); // Button that triggered the modal
+    
+    // console.log(_button, _button.parents("tr"));
+    var _row = _button.parents("tr");
+    var order_no = _row.find("#order_no").text();
+    var order_due_date = _row.find("#order_due_date").text();
+    var customer_name = _row.find("#customer_name").text();
+    var customer_addr = _row.find("#customer_addr").text();
+    var customer_phone = _row.find("#customer_phone").text();
+    var order_tot = _row.find("#order_tot").text();
+    
+    $(this).find("#order_no").val(order_no);
+    $(this).find("#order_due_date").val(order_due_date);
+    $(this).find("#customer_name").val(customer_name);
+    $(this).find("#customer_addr").val(customer_addr);
+    $(this).find("#customer_phone").val(customer_phone);
+    $(this).find("#order_tot").val(order_tot);
+  });  
+
+
+
+$(delete_order).click(function(){
+    if (confirm("Delete the selected order?")) {
+    	$(this).parents('tr').first().remove();
+   } 
+    
+});
+   
+
+</script>
+
+
+</div>
+
+</html>
+
+
