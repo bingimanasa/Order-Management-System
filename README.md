@@ -2,9 +2,9 @@
 Order management sysem will show list of orders 
 
 ### Login
-
-Login with credentials 
 Run login.html 
+Login with credentials 
+
 
 Username : admin
 Passwod : admin
